@@ -63,6 +63,6 @@ python main.py
 ## Citation
 If you use this tool in your research, please cite the following papers:
 
-F. Yen, Y. Lin, and Q. Fang, "Real-time guidance for fNIRS headgear placement using augmented reality," in Optica Biophotonics Congress: Biomedical Optics 2024 (Translational, Microscopy, OCT, OTS, BRAIN), Technical Digest Series (Optica Publishing Group, 2024), paper BW1C.6.
+Yen, F., Lin, Y., & Fang, Q. (2025). Improving neuroimaging headgear placement robustness using facial-landmark-guided augmented reality. Neurophotonics, 12(4), 045005. https://doi.org/10.1117/1.NPh.12.4.045005
 
 Dai, H., Pears, N., Smith, W., & Duncan, C. (2019). Statistical Modeling of Craniofacial Shape and Texture. International Journal of Computer Vision, 128(2), 547–571. https://doi.org/10.1007/s11263-019-01260-7
