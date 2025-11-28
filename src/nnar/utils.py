@@ -49,7 +49,8 @@ __all__ = [
 # =============================================================================
 # Dependent Libraries
 # =============================================================================
-
+import os
+from pathlib import Path
 import numpy as np
 import cv2
 import mediapipe as mp
@@ -59,14 +60,18 @@ import copy
 
 mp_drawing = mp.solutions.drawing_utils  # Drawing helpers
 
+
+def get_atlas_path(filename):
+    data_path = os.path.join(os.path.dirname(__file__), "data", "atlases", filename)
+    return data_path
+
+def get_model_path(filename):
+    data_path = os.path.join(os.path.dirname(__file__), "data", "models", filename)
+    return data_path
+
 # =============================================================================
 # Configuration and Constants
 # =============================================================================
-
-def get_atlas_path(filename):
-    from pathlib import Path
-    return str(Path(__file__).parent.parent.parent / "data" / "atlases" / filename)
-
 
 # Atlas file paths
 ATLAS_MAPPING = {

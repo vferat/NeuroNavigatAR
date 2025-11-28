@@ -10,22 +10,10 @@ from .utils import *
 
 mp_holistic = mp.solutions.holistic  # Mediapipe Solutions
 
-import os
-from pathlib import Path
-
-
-def get_data_path(filename):
-    data_path = os.path.join(os.path.dirname(__file__), "data", "atlases", filename)
-    return data_path
-
-
-def get_model_path(filename):
-    data_path = os.path.join(os.path.dirname(__file__), "data", "models", filename)
-    return data_path
 
 # Load atlas files
-atlas10_5_3points = jd.load(get_data_path("1020atlas_Colin27.json"))
-atlas10_5_5points = jd.load(get_data_path("1020atlas_Colin27_5points.json"))
+atlas10_5_3points = jd.load(get_atlas_path("1020atlas_Colin27.json"))
+atlas10_5_5points = jd.load(get_atlas_path("1020atlas_Colin27_5points.json"))
 atlas10_5 = copy.deepcopy(atlas10_5_3points)
 
 # Load trained models
