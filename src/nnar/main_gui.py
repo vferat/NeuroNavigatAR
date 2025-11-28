@@ -6,7 +6,19 @@ import copy
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
-from .utils import *
+from .utils import (
+    ATLAS_MAPPING,
+    apply_alternative_method,
+    apply_ml_prediction_method,
+    get_atlas_path,
+    get_model_path,
+    apply_registration_to_atlas_points,
+    apply_slider_adjustment,
+    update_mov_avg_buffer,
+    render_electrode_overlay,
+    convert_opencv_to_pixmap,
+    process_video_stream,
+)
 
 mp_holistic = mp.solutions.holistic  # Mediapipe Solutions
 
