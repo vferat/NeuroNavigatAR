@@ -11,6 +11,7 @@ dependencies = [
     "mediapipe",
     "PyQt5",
     "jdata",
+    "importlib-resources; python_version < '3.9'",
 ]
 [project.scripts]
 neuronavigatar = "nnar:main"
@@ -22,6 +23,7 @@ where = ["src"]
 include-package-data = true
 
 [tool.setuptools.package-data]
-'neuronavigatar' = [
-    'data/*',
+nnar = [
+    'data/atlases/*.json',
+    'data/models/*.json',
 ]

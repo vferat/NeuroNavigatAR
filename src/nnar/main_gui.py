@@ -13,16 +13,19 @@ mp_holistic = mp.solutions.holistic  # Mediapipe Solutions
 import os
 from pathlib import Path
 
-# Find project root directory
-def get_project_root():
-    return Path(__file__).parent
 
 def get_data_path(filename):
-    root = get_project_root()
-    return str(root / "data" / "atlases" / filename)
+    data_path = os.path.join(os.path.dirname(__file__), "data", "atlases", filename)
+    return data_path
+
 
 def get_model_path(filename):
-    return str(get_project_root() / "data" / "models" / filename)
+    data_path = os.path.join(os.path.dirname(__file__), "data", "models", filename)
+    return data_path
+        return str(data_file)
+    except (TypeError, AttributeError):
+        # Fallback for development mode
+        return str(Path(__file__).parent / "data" / "models" / filename)
 
 # Load atlas files
 atlas10_5_3points = jd.load(get_data_path("1020atlas_Colin27.json"))
