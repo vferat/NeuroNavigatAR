@@ -15,7 +15,7 @@ from pathlib import Path
 
 # Find project root directory
 def get_project_root():
-    return Path(__file__).parent.parent.parent
+    return Path(__file__).parent
 
 def get_data_path(filename):
     root = get_project_root()
