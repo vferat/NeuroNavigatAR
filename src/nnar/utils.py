@@ -130,7 +130,7 @@ ATLAS_MAPPING = {
     "Atlas (Age 80-84)": (
         get_atlas_path("1020atlas_80-84Years.json"),
         get_atlas_path("1020atlas_80-84Years_5points.json"),
-    ),
+    )
 }
 
 # EEG System Configurations
@@ -495,7 +495,6 @@ def get_drawing_point_groups(brain10_5p):
     """
     systems = extract_eeg_system_points(brain10_5p)
 
-    # 10-5 system points (full resolution)
     front_105_points = [
         brain10_5p["aal"],
         brain10_5p["aar"],
@@ -577,6 +576,34 @@ def get_drawing_point_groups(brain10_5p):
         systems["1020"]["back_sm"],
     ]
 
+    # ANT32 / Montage32 - 32 channel EEG system
+    front_ant32_points = [
+        # Midline electrodes (Fpz, Fz, Cz from cm; AFz from sm)
+        brain10_5p["sm"][[0, 2, 6]], 
+        # Left hemisphere
+        brain10_5p["aal"][[6]],
+        # Right hemisphere  
+        brain10_5p["aar"][[6]],
+    ]
+    
+    # Back electrodes (posterior half of head)
+    # Midline: Pz (cm[12]), Oz (cm[16])
+    # Left: CP5 (cpl_2[0]), CP1 (cpl_2[2]), P7 (apl[3]), P3 (apl[1]), O1 (apl[7])
+    # Right: CP6 (cpr_2[0]), CP2 (cpr_2[2]), P8 (apr[3]), P4 (apr[1]), O2 (apr[7])
+    back_ant32_points = [
+        # Midline electrodes (Pz, Oz)
+        brain10_5p["cm"][[12, 16]],  # Pz, Oz
+        brain10_5p["sm"][[12, 16]],  # Pz, Oz area on sagittal
+        # Left hemisphere
+        brain10_5p["apl"][[0, 3, 7]],  # P3, P7, O1 area
+        brain10_5p["cpl_2"][[0, 2, 4, 6]],  # CP5, CP1 area
+        brain10_5p["cpl_4"][[0, 2, 4, 6]],  # P3 area
+        # Right hemisphere
+        brain10_5p["apr"][[0, 3, 7]],  # P4, P8, O2 area
+        brain10_5p["cpr_2"][[0, 2, 4, 6]],  # CP6, CP2 area
+        brain10_5p["cpr_4"][[0, 2, 4, 6]],  # P4 area
+    ]
+
     return {
         "front_105": front_105_points,
         "back_105": back_105_points,
@@ -584,6 +611,8 @@ def get_drawing_point_groups(brain10_5p):
         "back_1010": back_1010_points,
         "front_1020": front_1020_points,
         "back_1020": back_1020_points,
+        "front_ant32": front_ant32_points,
+        "back_ant32": back_ant32_points,
     }
 
 
@@ -847,6 +876,13 @@ def render_electrode_overlay(
 
     # Configuration for different EEG systems
     systems_config = {
+        "ant32": {
+            "checkbox": checkbox_states.get("ant32", False),
+            "front_points": points["front_ant32"],
+            "back_points": points["back_ant32"],
+            "front_color": (255, 0, 255),  # Magenta
+            "back_color": (0, 255, 0),
+        },
         "105": {
             "checkbox": checkbox_states.get("105", False),
             "front_points": points["front_105"],

@@ -227,8 +227,9 @@ class nnar(QtWidgets.QMainWindow):
 
         # System checkboxes
         checkbox_configs = [
+            ("Display ANT32 points", "checkbox_ant32", True),
             ("Display 10-5 points", "checkbox_105", False),
-            ("Display 10-10 points", "checkbox_1010", True),
+            ("Display 10-10 points", "checkbox_1010", False),
             ("Display 10-20 points", "checkbox_1020", False),
         ]
 
@@ -320,6 +321,7 @@ class nnar(QtWidgets.QMainWindow):
     def plot_brain_landmarks(self, brain10_5p, results, image):
         """Plot brain landmarks on image"""
         checkbox_states = {
+            "ant32": self.checkbox_ant32.isChecked(),
             "105": self.checkbox_105.isChecked(),
             "1010": self.checkbox_1010.isChecked(),
             "1020": self.checkbox_1020.isChecked(),
