@@ -8,7 +8,7 @@ version = "0.1.0"
 dependencies = [
     "numpy",
     "opencv-python", 
-    "mediapipe==0.10.26",
+    "mediapipe==0.10.20",
     "PyQt5",
     "jdata",
     "importlib-resources; python_version < '3.9'",
